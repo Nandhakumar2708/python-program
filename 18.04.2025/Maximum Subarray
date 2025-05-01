@@ -1,0 +1,25 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+            
+        current_sum = max_sum = nums[0]
+        start = end = max_start = 0
+        
+        for i, num in enumerate(nums[1:], 1):
+            if current_sum < 0:
+                current_sum = num
+                start = i
+            else:
+                current_sum += num
+                
+            if current_sum > max_sum:
+                max_sum = current_sum
+                max_start = start
+                end = i
+                
+        return max_sum
