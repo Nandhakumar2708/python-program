@@ -1,0 +1,16 @@
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        count = 0  # Variable to store the length of the last word
+        space = False  # Boolean variable to track if a space is encountered
+        
+        # Iterate through each character in the string
+        for i in xrange(len(s)):
+            if s[i] == ' ':  # If a space character is encountered
+                space = True
+            elif s[i] != ' ' and space:  # If a non-space character is encountered after a space
+                count = 1  # Start counting a new word
+                space = False
+            else:
+                count += 1  # Increment the count for non-space characters
+            
+        return count
